@@ -11,6 +11,10 @@ set -e
 # Load environment modules for your application here.
 source ~/.bashrc
 
+# activate pmork anaconda2 environment encompassing clingo/telingo
+source deactivate
+source  activate pmork
+
 # Run jobs
 jobs="{jobs}"
 echo running jobs@$(hostname)...

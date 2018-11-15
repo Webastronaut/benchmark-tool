@@ -1,0 +1,30 @@
+<runscript output="output-clingo">
+
+	<machine name="zuse" cpu="24x8xE5520@2.27GHz" memory="64GB"/>
+	
+  	<config name="pbs-generic" template="templates/seq-generic.sh"/>
+  
+	<system name="clingo" version="pmork" measures="clingo" config="pbs-generic">
+
+    		<setting name="Base" cmdline="'0 --stats --quiet=2 '" tag="basic" pbstemplate="templates/single.pbs" />
+
+    </system>
+
+	<!--<seqjob name="seq-gen" timeout="900" runs="1" script_mode="timeout" walltime="50:00:00" parallel="1"/>-->
+
+	<benchmark name="ALL">
+		<folder path="benchmarks/clingo/"/>
+	</benchmark>
+
+	<pbsjob name="clingo-job" timeout="1200" runs="1" script_mode="timeout" walltime="48:00:00" cpt="4" partition="long"/>
+	
+	<!--<project name="clingo-seq-job" job="seq-gen">
+		<runtag machine="zuse" benchmark="multishot-clingo" tag="basic"/>
+	</project>-->
+
+	<project name="clingo-bmarks" job="clingo-job">
+		<runtag machine="zuse" benchmark="ALL" tag="*all*"/>
+	</project>
+
+</runscript>
+
