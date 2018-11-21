@@ -1,10 +1,10 @@
-<runscript output="output-clingo">
+<runscript output="output-telingo">
 
 	<machine name="zuse" cpu="24x8xE5520@2.27GHz" memory="64GB"/>
 	
   	<config name="pbs-generic" template="templates/seq-generic.sh"/>
   
-	<system name="clingo" version="pmork" measures="clasp" config="pbs-generic">
+	<system name="telingo" version="pmork" measures="clasp" config="pbs-generic">
 
     		<setting name="Base" cmdline="'0 --stats --quiet=2 '" tag="basic" pbstemplate="templates/single.pbs" />
 
@@ -13,17 +13,17 @@
 	<!--<seqjob name="seq-gen" timeout="900" runs="1" script_mode="timeout" walltime="50:00:00" parallel="1"/>-->
 
 	<benchmark name="ALL">
-		<folder path="benchmarks/clingo/"/>
+		<folder path="benchmarks/telingo/"/>
 	</benchmark>
 
 	<!-- was timeout="1200", is now 3 hrs per instance -->
-	<pbsjob name="clingo-job" timeout="10800" runs="1" script_mode="timeout" walltime="48:00:00" cpt="4" partition="long"/>
+	<pbsjob name="telingo-job" timeout="10800" runs="1" script_mode="timeout" walltime="48:00:00" cpt="4" partition="long"/>
 	
 	<!--<project name="clingo-seq-job" job="seq-gen">
 		<runtag machine="zuse" benchmark="multishot-clingo" tag="basic"/>
 	</project>-->
 
-	<project name="clingo-bmarks" job="clingo-job">
+	<project name="telingo-bmarks" job="telingo-job">
 		<runtag machine="zuse" benchmark="ALL" tag="*all*"/>
 	</project>
 

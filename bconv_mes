@@ -3,7 +3,7 @@
 file=$1
 name=$2
 
-measures=time:t #,error #,ctime,csolve,ground0,groundN,models,timeout,restarts,conflicts,choices,domain,vars,cons,mem,error,memout
+measures=time:t,error,ctime,csolve,ground0,groundN,models,timeout,restarts,conflicts,choices,domain,vars,cons,mem,error,memout
 
 rm -rf results/$name
 mkdir -p results/$name 
