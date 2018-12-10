@@ -6,7 +6,7 @@
   
 	<system name="clingo" version="pmork" measures="clasp" config="pbs-generic">
 
-    		<setting name="Base" cmdline="'0 --stats --quiet=2 '" tag="basic" pbstemplate="templates/single.pbs" />
+    		<setting name="Base" cmdline="'1 --stats --quiet=2 --parallel-mode=24 --time-limit=18000'" tag="basic" pbstemplate="templates/single.pbs" />
 
     </system>
 
@@ -16,8 +16,9 @@
 		<folder path="benchmarks/clingo/"/>
 	</benchmark>
 
-	<!-- was timeout="1200", is now 3 hrs per instance -->
-	<pbsjob name="clingo-job" timeout="10800" runs="1" script_mode="timeout" walltime="48:00:00" cpt="4" partition="long"/>
+	<!-- was timeout="10800", is now 5 hrs per instance -->
+	<!-- changed cpt="4" to cpt="24" -->
+	<pbsjob name="clingo-job" timeout="18000" runs="1" script_mode="timeout" walltime="48:00:00" cpt="24" partition="long"/>
 	
 	<!--<project name="clingo-seq-job" job="seq-gen">
 		<runtag machine="zuse" benchmark="multishot-clingo" tag="basic"/>
