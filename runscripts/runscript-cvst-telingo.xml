@@ -16,9 +16,7 @@
 		<folder path="benchmarks/telingo/"/>
 	</benchmark>
 
-	<!-- was timeout="10800", is now 5 hrs per instance -->
-	<!-- changed cpt="4" to cpt="24" -->
-	<pbsjob name="telingo-job" timeout="18000" runs="1" script_mode="timeout" walltime="48:00:00" cpt="4" partition="long"/>
+	<pbsjob name="telingo-job" timeout="86400" runs="1" script_mode="timeout" walltime="48:00:00" cpt="1" partition="long"/>
 	
 	<!--<project name="clingo-seq-job" job="seq-gen">
 		<runtag machine="zuse" benchmark="multishot-clingo" tag="basic"/>
